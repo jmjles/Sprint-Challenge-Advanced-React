@@ -7,11 +7,15 @@ class PlayerList extends Component {
         players:[]
     }
     async componentDidMount(){
-        const res = await axios('http://localhost:5000/api/players')
-        const data = res.data
-        this.setState({
-            players:data
-        })
+        try{
+            const res = await axios('http://localhost:5000/api/players')
+            const data = res.data
+            this.setState({
+                players:data
+            })
+        }catch(er){
+            console.log(er)
+        }
     }
     render() {
         return (
